@@ -1,0 +1,27 @@
+{
+  "name": "odin-library",
+  "version": "1.0.0",
+  "description": "The Odin Project - Library",
+  "main": "index.js",
+  "scripts": {
+    "buildcss": "npx tailwindcss -i ./src/style.css -o ./public/public.css --watch"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/syzgod/odin-library.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/syzgod/odin-library/issues"
+  },
+  "homepage": "https://github.com/syzgod/odin-library#readme",
+  "dependencies": {
+    "tailwindcss": "^3.2.1"
+  },
+  "devDependencies": {
+    "prettier": "^2.7.1",
+    "prettier-plugin-tailwindcss": "^0.1.13"
+  }
+}

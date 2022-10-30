@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="../public/public.css" />
+    <script src="../src/index.js" defer></script>
+    <title>Library</title>
+  </head>
+  <body>
+    <div class="wrapper flex h-screen w-screen items-center justify-center">
+      <div class="library-container"></div>
+      <button class="btn add-new-book">Add new book</button>
+      <div
+        class="input-modal center hidden h-2/4 w-2/4 flex-col flex-wrap items-center justify-center rounded-3xl border border-neutral-800 p-7 shadow-md shadow-neutral-400"
+      >
+        <form action="submit" class="addBook-form" id="addBook" class="flex">
+          <label for="bookTitle">Book title</label>
+          <input
+            type="text"
+            name="bookTitle"
+            id="bookTitle"
+            placeholder="Book title"
+          />
+          <div class="bookAuthor">
+            <label for="bookAuthor">Book author</label>
+            <input
+              type="text"
+              name="bookAuthor"
+              id="bookAuthor"
+              placeholder="Book author"
+            />
+          </div>
+          <div class="bookDate">
+            <label for="bookDate">Release date</label>
+            <input
+              type="number"
+              min="1800"
+              max="2023"
+              step="1"
+              value="2022"
+              placeholder="YYYY"
+              id="bookDate"
+            />
+          </div>
+          <div class="bookPages">
+            <label for="bookPages">Number of pages</label>
+            <input
+              type="number"
+              min="1"
+              max="1000"
+              step="1"
+              value="1"
+              id="bookPages"
+            />
+          </div>
+          <div class="bookCategory">
+            <label for="bookCategory">Category of the book:</label>
+            <select name="bookCategory" id="bookCategory" form="addBook">
+              <optgroup label="Fiction">
+                <option value="fantasy">Fantasy</option>
+                <option value="horror">Horror</option>
+                <option value="romance">Romance</option>
+                <option value="mystery">Mystery</option>
+                <option value="thriller">Thriller</option>
+                <option value="drama">Drama</option>
+                <option value="satire">Satire</option>
+                <option value="tragedy">Tragedy</option>
+                <option value="comedy">Comedy</option>
+                <option value="tragicomedy">Tragicomedy</option>
+              </optgroup>
+
+              <optgroup label="Non-fiction">
+                <option value="biography">Biography</option>
+                <option value="history">History</option>
+                <option value="science">Science</option>
+                <option value="philosophy">Philosophy</option>
+                <option value="self-help">Self-help</option>
+                <option value="health">Health</option>
+                <option value="travel">Travel</option>
+              </optgroup>
+              >
+            </select>
+          </div>
+          <div class="bookIsRead flex items-center accent-green-600">
+            <label for="bookIsRead">Is it already read?</label>
+            <input
+              type="checkbox"
+              name="bookIsRead"
+              id="bookIsRead"
+              class="h-5 w-5"
+              checked
+            />
+          </div>
+          <button type="submit" class="btn add-book-btn">Add book</button>
+        </form>
+      </div>
+    </div>
+  </body>
+</html>

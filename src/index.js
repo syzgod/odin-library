@@ -47,7 +47,7 @@ const displayLibrary = () => {
   myLibrary.forEach((book) => {
     const libraryContainer = document.querySelector(".library-container");
     libraryContainer.innerHTML += `
-    <div class="book-container flex">
+    <div class="book-container flex" data-pages="${Math.random() * book.pages}">
       <h3 class="book-title">${book.title}</h3>
       <div class="book-author">Book author: ${book.author}</div>
       <div class="book-date">Release date: ${book.date}</div>
@@ -62,7 +62,18 @@ const displayLibrary = () => {
       </div>
     </div>
         `;
+    addBookCardButtons();
   });
+};
+
+const addBookCardButtons = (e) => {
+  const removeBook = document.querySelectorAll(".remove-book");
+  const changeReadStatus = document.querySelectorAll(".change-read-status");
+  removeBook.forEach((button) =>
+    button.addEventListener("click", (e) => {
+      console.log(e.target.parentElement.parentElement.dataset);
+    })
+  );
 };
 
 const form = document.querySelector(".addBook-form");

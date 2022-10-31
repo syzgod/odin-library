@@ -1,4 +1,5 @@
 let myLibrary = [];
+let bookIndex;
 
 const inputModal = document.querySelector(".input-modal");
 
@@ -45,16 +46,20 @@ const displayLibrary = () => {
   libraryContainer.innerHTML = "";
   libraryContainer.style.display = "flex";
   myLibrary.forEach((book) => {
+    bookIndex = myLibrary.indexOf(book);
     const libraryContainer = document.querySelector(".library-container");
     libraryContainer.innerHTML += `
-    <div class="book-container flex" data-pages="${Math.random() * book.pages}">
-      <h3 class="book-title">${book.title}</h3>
+    <div class="book-container flex" data-bookId="${bookIndex}">
+
+    <h3>Book #${bookIndex + 1}: ${book.title}</h3>
       <div class="book-author">Book author: ${book.author}</div>
       <div class="book-date">Release date: ${book.date}</div>
       <div class="book-category">Category: ${book.category}</div>
       <div class="book-pages">Number of pages: ${book.pages}</div>
       <div class="book-read">The book is ${
-        book.read ? "already read" : "not read yet"
+        book.read
+          ? "<span class='bg-green-600 p-1 text-white'>already read</span>"
+          : "<span class='bg-red-600 p-1 text-white'>not read yet</span>"
       }</div>
       <div class="card-buttons flex flex-row">
         <button class="btn remove-book">Remove book</button>
@@ -62,16 +67,23 @@ const displayLibrary = () => {
       </div>
     </div>
         `;
-    addBookCardButtons();
+    addBookCardButtonsListeners();
   });
 };
 
-const addBookCardButtons = (e) => {
+const addBookCardButtonsListeners = (e) => {
   const removeBook = document.querySelectorAll(".remove-book");
   const changeReadStatus = document.querySelectorAll(".change-read-status");
   removeBook.forEach((button) =>
     button.addEventListener("click", (e) => {
-      console.log(e.target.parentElement.parentElement.dataset);
+      myLibrary.splice(bookIndex, 1);
+      displayLibrary();
+    })
+  );
+  changeReadStatus.forEach((button) =>
+    button.addEventListener("click", (e) => {
+      myLibrary[bookIndex].read = !myLibrary[bookIndex].read;
+      displayLibrary();
     })
   );
 };
